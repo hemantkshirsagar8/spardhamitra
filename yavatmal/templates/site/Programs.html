@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Programs</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="/static/site/css/reset.css" type="text/css" media="all">
+<link rel="stylesheet" href="/static/site/css/layout.css" type="text/css" media="all">
+<link rel="stylesheet" href="/static/site/css/style.css" type="text/css" media="all">
+<script type="text/javascript" src="/static/site/js/jquery-1.5.2.js" ></script>
+<script type="text/javascript" src="/static/site/js/cufon-yui.js"></script>
+<script type="text/javascript" src="/static/site/js/cufon-replace.js"></script>
+<script type="text/javascript" src="/static/site/js/Molengo_400.font.js"></script>
+<script type="text/javascript" src="/static/site/js/Expletus_Sans_400.font.js"></script>
+
+<style>
+
+    .white_content {
+        width:100%;
+        height:500px;
+        display: block;
+
+    }
+
+</style>
+
+
+
+</head>
+<body id="page3">
+<div class="body1">
+	<div class="main">
+<!-- header -->
+		<header>
+			<div class="wrapper">
+				<nav>
+					<ul id="menu">
+						<li><a href="/index">About</a></li>
+						<li><a href="/Courses">Courses</a></li>
+						<li><a href="/Programs">Articles</a></li>
+						{% if user.username %}
+							<li><a href="/Dashboard">Dashboard</a></li>
+							{% endif %}
+						<li><a href="/Teachers">Teachers</a></li>
+						<li><a href="/Admissions">Admissions</a></li>
+						<li class="end"><a href="/Contacts">Contacts</a></li>
+					</ul>
+				</nav>
+				{% if user.username %}
+					<div style="font-family:'Arial Rounded MT'; font-size:small; color:wheat; text-align:right">
+                    <b>Welcome {{ user.username }} ! <a href="/logout/" style="color:red">Logout</a></b>
+					</div>
+					{% endif %}
+				<ul id="icons">
+					<li><a href="#"><img src="/static/site/images/icons1.jpg" alt=""></a></li>
+					<li><a href="#"><img src="/static/site/images/icons2.jpg" alt=""></a></li>
+				</ul>
+			</div>
+			<div class="wrapper">
+				<h1><a href="/" id="logo">Learn Center</a></h1>
+			</div>
+			<div id="slogan">
+				We Will Open The World<span>of knowledge for you!</span>
+			</div>
+		</header>
+<!-- / header -->
+	</div>
+</div>
+<div class="body2">
+	<div class="main">
+<!-- content -->
+		<section id="content">
+			<div class="box1">
+				<div class="wrapper">
+					<article class="col1">
+						<div class="pad_left1">
+							<a href="#" class="button"><span><span> अकॅडमिक प्रोग्राम्स </span></span></a>
+                                <br />
+						</div>
+                        <div id="lightL" class="white_content" >
+						<div >
+                		    <iframe  name="imgArticle" scrolling="yes" width="100%" height="500px" src="/Programs/1/" ></iframe>
+                		</div>
+                        </div>
+					</article>
+					<article class="col2 pad_left2">
+					<div class="pad_left1">
+							    <a href="#" class="button"><span><span> महत्वाच्या लिंक्स </span></span></a>
+                                <br />
+							</div>
+							<br />
+							<ul class="list1">
+								{% if Articles %}
+                                {% for Articles in Articles %}
+                                <li><a href="/Programs/{{ Articles.ArticleID }}/" onclick = "document.getElementById('lightL').style.display='block'" target="imgArticle" > {{ Articles.Heading }} </a> </li>
+                                {% endfor %}
+                                {% else %}
+                                <li><a href="#">No Articles currently </a> </li>
+                                {% endif %}
+							</ul>
+						<div class="pad_left1">
+							<h2>मनोगत</h2>
+							<p class="quot">
+								<span><strong><a href="#">नगराळे सर</a></strong></span>
+								<span class="color1">लेक्चरर</span>
+								<span class="color2 pad_bot1">Company Name</span>
+								नमस्कार,
+आंतरजाल हे सामान्य जनमानसाला उपलब्ध असलेलं अत्यंत प्रभावी माध्यम आहे.
+							</p>
+						</div>
+
+					</article>
+				</div>
+			</div>
+		</section>
+<!-- content -->
+<!-- footer -->
+		<footer>
+			<div class="wrapper">
+				<div class="pad1">
+					<div class="pad_left1">
+
+					</div>
+				</div>
+			</div>
+		</footer>
+<!-- / footer -->
+	</div>
+</div>
+<script type="text/javascript"> Cufon.now(); </script>
+</body>
+</html>

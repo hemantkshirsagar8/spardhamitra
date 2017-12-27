@@ -1,0 +1,72 @@
+
+{% block content %}
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+
+<script type="text/javascript">
+
+</script>
+
+<style type="text/css">
+  table, tr, td {border: 0px solid silver;
+  color: gray;}
+  tr.noBorder td {border: 0; }
+</style>
+
+</head>
+<body>
+
+    <div>
+            <div >
+
+                <form method="post" name="example form" >
+                    {% csrf_token %}
+                    <table>
+                        {% if examdata %}
+                        {% for examdata in examdata %}
+                        <tr>
+                            <td><div style="text-align:left"><strong style="color:#00aacc">परिक्षा :</strong> {{ examdata.ExamName }}</div></td>
+                            <td align="right"><div style="text-align:right"><strong style="color:#00aacc">वेळ :</strong> {{ examdata.TimePeriod }} (मिनीट)</div></td>
+                        </tr>
+                        {% endfor %}
+                            <tr>
+                                <td colspan="2">
+                                    <div style="border: 1px solid silver">
+                                        <h3 style="margin-left: 30px; color:#00cc77;text-align: left ">सूचना :</h3>
+                                        <ul style="align:center; color:#00aacc; ">
+                                            <li>१) सर्व प्रश्न सोडवणे आवश्यक आहे. </li></br>
+                                            <li>२) प्रत्येक अचूक उत्तरासाठी  १ गुण असेल. </li></br>
+                                            <li>३) प्रश्नपत्रिका तपासण्यासाठी जमा करण्याकरता सगळ्यात खाली Submit हे बटन आहे. </li></br>
+                                            <li>४) प्रश्नपत्रिका सोडवून झाल्यानंतर dashboard वर तुमचा निकाल पाहता येइल. </li></br>
+                                            <li>५) सोडवलेले प्रश्न आणि अचूक उत्तरं तुमच्या पर्यायासोबत पडताळता येइल. </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% else %}
+                        {% endif %}
+                        <tr>
+                            {% if ResultData %}
+                            {% for ResultData in ResultData %}
+                            <td><strong style="color:black"> आपण आधीच हि परिक्षा दिनांक {{ ResultData.CreateDate }} रोजी दिलेली आहेत. </strong></td>
+                            <td colspan="2" align="center"><input id="btnBackDash" type="button" value="Back To Dashboard" onclick="location.href='http://www.hemantkshirsagar.in/AppDashboard/'" /></td>
+                            {% endfor %}
+                            {% endif %}
+                            {% if examdata %}
+                            {% for examdata in examdata %}
+                            <td colspan="4" align="center"><input id="btnStartExam" type="button" value="Start Exam" onclick="location.href='http://www.hemantkshirsagar.in/Appappear_exam/{{ examdata.ExamID }}/'" /></td>
+                            {% endfor %}
+                            {% endif %}
+                        </tr>
+                    </table>
+                    </form>
+                <div class="clear"></div>
+        </div>
+        </div>
+</body>
+</html>
+
+{% endblock %}

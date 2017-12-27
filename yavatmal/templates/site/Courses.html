@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Courses</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="/static/site/css/reset.css" type="text/css" media="all">
+<link rel="stylesheet" href="/static/site/css/layout.css" type="text/css" media="all">
+<link rel="stylesheet" href="/static/site/css/style.css" type="text/css" media="all">
+<script type="text/javascript" src="/static/site/js/jquery-1.5.2.js" ></script>
+<script type="text/javascript" src="/static/site/js/cufon-yui.js"></script>
+<script type="text/javascript" src="/static/site/js/cufon-replace.js"></script>
+<script type="text/javascript" src="/static/site/js/Molengo_400.font.js"></script>
+<script type="text/javascript" src="/static/site/js/Expletus_Sans_400.font.js"></script>
+<!--[if lt IE 9]>
+<script type="text/javascript" src="/static/site/js/html5.js"></script>
+<style type="text/css">
+	.bg, .box2 {behavior:url(js/PIE.htc)}
+</style>
+<![endif]-->
+<!--[if lt IE 7]>
+	<div style=' clear: both; text-align:center; position: relative;'>
+		<a href="/static/site/http://www.microsoft.com/windows/internet-explorer/default.aspx?ocid=ie6_countdown_bannercode">
+		<img src="/static/site/http://www.theie6countdown.com/images/upgrade.jpg" border="0"  alt="" /></a>
+	</div>
+<![endif]-->
+</head>
+
+<body id="page2">
+	<div class="body1">
+		<div class="main">
+<!-- header -->
+			<header>
+				<div class="wrapper">
+					<nav>
+						<ul id="menu">
+							<li><a href="/index">About</a></li>
+							<li><a href="/Courses">Courses</a></li>
+							<li><a href="/Programs">Articles</a></li>
+							{% if user.username %}
+							<li><a href="/Dashboard">Dashboard</a></li>
+							{% endif %}
+							<li><a href="/Teachers">Teachers</a></li>
+							<li><a href="/Admissions">Admissions</a></li>
+							<li class="end"><a href="/Contacts">Contacts</a></li>
+						</ul>
+					</nav>
+					{% if user.username %}
+					<div style="font-family:'Arial Rounded MT'; font-size:small; color:wheat; text-align:right">
+                    <b>Welcome {{ user.username }} ! <a href="/logout/" style="color:red">Logout</a></b>
+					</div>
+					{% endif %}
+					<ul id="icons">
+						<li><a href="#"><img src="/static/site/images/icons1.jpg" alt=""></a></li>
+						<li><a href="#"><img src="/static/site/images/icons2.jpg" alt=""></a></li>
+					</ul>
+				</div>
+				<div class="wrapper">
+					<h1><a href="/" id="logo">Learn Center</a></h1>
+				</div>
+				<div id="slogan">
+					We Will Open The World<span>of knowledge for you!</span>
+				</div>
+
+			</header>
+<!-- / header -->
+		</div>
+	</div>
+	<div class="body2">
+		<div class="main">
+<!-- content -->
+			<section id="content">
+				<div class="box1">
+					<div class="wrapper">
+						<article class="col1">
+						    <br />
+							<div class="pad_left1">
+							    <a href="#" class="button"><span><span> बेसीक कोर्सेस </span></span></a>
+							</div>
+							<div class="wrapper pad_bot1">
+								<figure class="left marg_right1"><img src="/static/site/images/page2_img1.jpg" alt=""></figure>
+								<p class="pad_bot1 pad_top2"><strong>अश्या ओळी मनात बडबडत बडबडत...,मी वाडीतून पुढे होऊ लागलो.</strong></p>
+								<p>
+										पण सगळी मंडळी भेटलेली असताना,नेमकी ही कुठे गेली? हा प्रश्न मनात होताच. मनात म्हटलं..मी येण्यापूर्वी आदल्या दिवशीचा फोन केला नाही..म्हणून गाडी बिनसली,किंवा रुसलीबिसली की काय? पण मग गेली असेल गावात कुठेतरी ..असं समजुन मी वाडीतून चालत चालत मस्त छान ग्गार हवा देणार्‍या माझ्या विहिरीकडेच्या आंब्याच्या झाडाखालच्या त्या नारळाच्या ओंडक्यावर बसलो. आणि .. 'आता महिनाभर इकडे काढल्यावर पुन्हा एकदा आणि ते ही किमान सात आठ महिने आपणाला पुण्यपत्तनात जावे लागणार आहे...ही एक आता नेहमीचीच गोष्ट असणार आहे.. असलं विचारचक्र सुरु होत नै होतं ..तर एकदम मागुन येऊन कुणीतरी माझे डोळे धरले!</p>
+							</div>
+							<div class="pad_left1">
+								<div class="box2">
+									<div class="wrapper">
+										<div class="cols">
+											<ul class="list3">
+												<li><a href="#">मराठी</a></li>
+												<li><a href="#">इतिहास</a></li>
+												<li><a href="#">गणित</a></li>
+												<li><a href="#">भुगोल</a></li>
+											</ul>
+										</div>
+										<div class="cols pad_left2">
+											<ul class="list3">
+												<li><a href="#">मराठी</a></li>
+												<li><a href="#">इतिहास</a></li>
+												<li><a href="#">गणित</a></li>
+												<li><a href="#">भुगोल</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<p><strong>उंदिरच होता ना गं तुझ्या नवर्‍यापाठिमागे?</strong> पण माझा काका तो काकाच! त्याच्या एखाद्याला समजुन घेऊन समजावून सांगण्याच्या पद्धतीला तोड नव्हती. जेवणं झाल्यावर रात्री आंगण्यात शतपावली करता करता..तो मला म्हणाला , "आत्मू.. बाई आणि पुरुष विवाहानी असो,अथवा त्याशिवाय..परंतू नैसर्गिक भुकेची मर्यादा पाळत असतात,तोपर्यंतच त्यात गोडवा असतो. आणि तो असायलाही हवाच. नायतर ती पण एक विकृती होते.पण ती मर्यादा सार्वजनिकपणे व्यक्त होताना भानावरंही रहायला हवी. नायतर आपण गोठ्यातल्या गाईबैलांपेक्षा फक्त वेगळे हंबरतो एव्हढाच तिचा अर्थ होइल.." "तुझ्या बायकोस सांग...म्हणावं..मी मुलगी मानून तिला घरात मोकळेपणा तयार करून दिलाय..तो तसाच नीट जप. नायतर हा तुझा दुसरा बाप रुसेल हं तुझ्यावर!"
+मला त्यातलं जे कळायचं ते कळलं..आणि मी ते हिला दुसर्‍या दिवशी सांगितलंही. पण ही घरामधे माझ्याही पुढे दोन पावलं मिसळलेली होती..हे मला नंतर कळलं. मी आणि काका ज्या एका एव्हढ्याश्या प्रसंगानी चर्चा करून र्‍हायलो होतो..तो प्रसंग हिच्या, आज्जिच्या आणि आइच्या गाविही नव्हता. मी हिला त्या बाबतीत बोलल्यावर मला ही म्हणते. "ते आंम्ही विसरलोपण दोघिजणी!" मी आश्चर्यानी हिला "अगं पण ..कसं???" असं विचारता झालो..तर त्याच्यावर हिनी मला चक्क एक थिअरीच सांगितलीन. .. "ज्याचं भांडण होइल,त्याच्यापेक्षा वेगळ्या माणसानी त्या भांडणाचा हिशेब पहायचा..तुमच्या आइच्या भिशीचा मी पहात होते...तसा! म्हणजे मग तो बरोब्बर कोणाचं काय चुकलं ते सांगतो. आणि ज्याची चुक संगितली जाइल..त्यानी सॉर्र्री म्हणायचच..कि संपलं ! आहे क्की नै सोप्पी आयडिया.? तुमच्या भटजींच्यात पण वापरा " मी ("मला" मिळालेल्या उपदेशासह! ;) ) थक्कच झालो हे ऐकून.. माझ्यामागे हीनी म्हणजे घरात ही अभूतपूर्व क्रांतीच केलीवतीन अगदी. नाहितर पूर्वी आइ आणि आज्जीचं कधी भांडण झालं, तर ते सोडवता सोडवता काकाही थकायचा कधी कधी! </p>
+							</div>
+
+						</article>
+						<article class="col2 pad_left2">
+
+						    <br />
+							<div class="pad_left1">
+							    <a href="#" class="button"><span><span> महत्वाच्या लिंक्स </span></span></a>
+                                <br />
+							</div>
+							<br />
+							<ul class="list1">
+								<li><a href="#">परीक्षेविषयी सुचना </a></li>
+								<li><a href="#">वेळापत्रक </a></li>
+								<li><a href="#">महत्वाच्या तारखा आणि नोंदी </a></li>
+								<li><a href="#">क्लास्सेस आणि फीस </a></li>
+								<li><a href="#">मागील वर्षाचे पेपर </a></li>
+							</ul>
+
+						</article>
+					</div>
+				</div>
+			</section>
+<!-- content -->
+<!-- footer -->
+			<footer>
+				<div class="wrapper">
+					<div class="pad1">
+						<div class="pad_left1">
+
+						</div>
+					</div>
+				</div>
+			</footer>
+<!-- / footer -->
+		</div>
+	</div>
+<script type="text/javascript"> Cufon.now(); </script>
+</body>
+</html>

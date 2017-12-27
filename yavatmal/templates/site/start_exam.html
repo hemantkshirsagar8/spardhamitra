@@ -1,0 +1,85 @@
+
+{% block content %}
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="/static/css/styles.css" type="text/css" />
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+
+<script type="text/javascript">
+
+</script>
+
+<style type="text/css">
+  table, tr, td {border: 0px solid silver; }
+  tr.noBorder td {border: 0; }
+</style>
+
+</head>
+<body>
+
+    <div id="container" class="width">
+            <div id="paper" class="shadow" style="height:60%">
+
+                <form method="post" name="example form" >
+                    {% csrf_token %}
+                    <table>
+                        <tr>
+                            <td colspan="3" style="background-color:#145d84">
+                                <h4 style="text-align: center; color:white">Examination Center</h4>
+                            </td>
+                        </tr>
+                        {% if examdata %}
+                        {% for examdata in examdata %}
+                        <tr>
+                            <td><b style="text-align:left"><strong style="color:black">Subject:</strong> {{ examdata.SubjectID }}</b></td>
+                            <td align="center"><b style="text-align:center">{{ examdata.ExamName }}</b></td>
+                            <td align="right"><b style="text-align:right"><strong style="color:black">Time:</strong> {{ examdata.TimePeriod }} (Hours)</b></td>
+                        </tr>
+                        {% endfor %}
+                            <tr>
+                                <td colspan="3">
+                                    <div style="border: 1px solid silver">
+                                        <u><h5 style="color:black;text-align: center "><strong>General Instructions For Exam</strong></h5></u>
+                                        <br />
+                                        <ol style="align:center">
+                                            <li>Something something need to do.</li>
+                                            <li>Something something need to do.</li>
+                                            <li>Something something need to do.</li>
+                                            <li>Something something need to do.</li>
+                                            <li>Something something need to do.</li>
+                                            <li>Something something need to do.</li>
+                                            <li>Something something need to do.</li>
+                                        </ol>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% else %}
+
+                        {% endif %}
+
+                        <tr>
+                            {% if ResultData %}
+                            {% for ResultData in ResultData %}
+                            <td><strong style="color:black">You have already attended this exam on {{ ResultData.CreateDate }}. </strong></td>
+                            <td colspan="3" align="center"><input id="btnBackDash" type="button" value="Back To Dashboard" onclick="location.href='http://www.hemantkshirsagar.in/Dashboard/'" /></td>
+                            {% endfor %}
+                            {% endif %}
+
+                            {% if examdata %}
+                            {% for examdata in examdata %}
+                            <td colspan="4" align="center"><input id="btnStartExam" type="button" value="Start Exam" onclick="location.href='http://www.hemantkshirsagar.in/appear_exam/{{ examdata.ExamID }}/'" /></td>
+                            {% endfor %}
+                            {% endif %}
+                        </tr>
+                    </table>
+                    </form>
+                <div class="clear"></div>
+        </div>
+        </div>
+</body>
+</html>
+
+{% endblock %}

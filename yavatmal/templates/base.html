@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title>Nagarale Tutions | {% block title %}{% endblock %} </title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="/static/css/reset.css" type="text/css" />
+    <link rel="stylesheet" href="/static/css/styles.css" type="text/css" />
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
+    <script type="text/javascript" src="/static/js/jquery.js"></script>
+    <script type="text/javascript" src="/static/js/slider.js"></script>
+    <script type="text/javascript" src="/static/js/superfish.js"></script>
+    <script type="text/javascript" src="/static/js/custom.js"></script>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+</head>
+<body>
+    <h1>{% block head %}{% endblock %}</h1>
+    {% block content %}
+    <div id="container" class="width">
+
+        <header>
+            <div class="width">
+
+
+
+
+                <h1><a href="#">Nagarale<strong>Tutions</strong></a></h1>
+                <nav>
+
+                    <ul class="sf-menu dropdown">
+
+                        <li class="selected"><a href="#"><i class="fa fa-home"></i> Home</a></li>
+
+                        <li><a href="#"><i class="fa fa-briefcase"></i> About Us</a></li>
+
+                        <li><a href="#"><i class="fa fa-phone"></i> Contact</a></li>
+                    </ul>
+
+                    <div class="clear"></div>
+                </nav>
+            </div>
+            <div class="clear"></div>
+
+
+        </header>
+
+
+
+        <div id="body" class="width">
+
+
+            <section id="content" class="two-column with-right-sidebar">
+            </section>
+
+            <aside class="sidebar big-sidebar right-sidebar">
+
+
+                <ul>
+                    <li>
+                        <ul class="blocklist">
+                            <li><a class="selected" href="/register">Register</a></li>
+                            <li><a class="selected" href="/">Student Login </a></li>
+                            <li><a class="selected" href="/admin">Admin Login</a></li>
+
+                        </ul>
+                    </li>
+
+                    <li>
+                        <ul class="newslist"></ul>
+                    </li>
+
+
+                </ul>
+
+            </aside>
+            <div class="clear"></div>
+        </div>
+        <footer>
+            <div class="footer-content width">
+
+                <ul class="endfooter">
+                    <li>
+                        <div class="social-icons">
+                            <a href="#"><i class="fa fa-facebook fa-2x"></i></a>
+                            <a href="#"><i class="fa fa-twitter fa-2x"></i></a>
+                            <a href="#"><i class="fa fa-youtube fa-2x"></i></a>
+                            <a href="#"><i class="fa fa-instagram fa-2x"></i></a>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="clear"></div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; Nagarale Tutions 2014. <a href="#"></a> </p>
+            </div>
+        </footer>
+    </div>
+    {% endblock %}
+</body>
+</html>

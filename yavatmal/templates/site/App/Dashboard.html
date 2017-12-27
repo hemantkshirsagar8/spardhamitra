@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% block content %}
+<title>MPSC सराव </title>
+<meta charset="utf-8">
+
+
+<link rel="stylesheet" href="/static/site/css/Appstyle.css" type="text/css" media="all">
+<script type="text/javascript" src="/static/site/js/jquery-1.5.2.js" ></script>
+
+<script type="text/javascript">
+$(function(){
+  $('ul.tabs li:first').addClass('active');
+  $('.block article').hide();
+  $('.block article:first').show();
+  $('ul.tabs li').click(function(){
+    $('ul.tabs li').removeClass('active');
+    $(this).addClass('active')
+    $('.block article').hide();
+    var activeTab = $(this).find('a').attr('href');
+    $(activeTab).show();
+    return false;
+  });
+})
+
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-77393440-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</head>
+<body style="margin: 0 0 0 0;">
+<section class="wrapper">
+  <ul class="tabs">
+    <li><a href="#tab1">परिक्षा </a></li>
+    <li><a href="#tab2">निकाल </a></li>
+    <li><a href="#tab3">सुचना </a></li>
+    <li><a href="#tab4">प्रोफाईल </a></li>
+  </ul>
+  <div class="clr"></div>
+  <section class="block">
+    <article id="tab1">
+      <div class="content">
+        <div class="CSSTableGenerator">
+            <table border="0">
+                <tr>
+                    <td>
+                        परिक्षा
+                    </td>
+                </tr>
+                {% if examdata %}
+                {% for examdata in examdata %}
+                <tr>
+                    <td>
+                        <span style="font-size: 12pt; width:100%; float:left; "><a href="/Appstart_exam/{{ examdata.ExamID }}/">{{ examdata.ExamName }}</a></span>
+                        <br>
+                        <span style="font-size: 10pt; float:left"> {{ examdata.CreateDate }} </span>
+                        <span style="font-size: 10pt; float:right"> {{ examdata.TimePeriod }} Mins. </span>
+
+                    </td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                <tr>
+                    <td colspan="3">
+                        <strong>There are no exam data present.</strong>
+                    </td>
+                </tr>
+                {% endif %}
+            </table>
+        </div>
+    </div>
+    </article>
+    <article id="tab2">
+      <div class="content">
+        <div class="CSSTableGenerator">
+            <table border="0">
+                <tr>
+                    <td>
+                        परिक्षा
+                    </td>
+                    <td>
+                        गुण
+                    </td>
+                    <td>
+                        (%)
+                    </td>
+                    <td>
+                        निकाल
+                    </td>
+                    <td>
+                        तारीख
+                    </td>
+                </tr>
+                {% if resultdata %}
+                {% for resultdata in resultdata %}
+
+
+
+                <tr>
+                    <td>
+                        <a href="/Appexam_answers/{{ resultdata.ResultDetailID }}/">{{ resultdata.ExamID }}</a>
+                    </td>
+                    <td>
+                        {{ resultdata.MarksObtain }}/{{ resultdata.TotalMarks }}
+                    </td>
+                    <td>
+                        {{ resultdata.Percentage }}%
+                    </td>
+                    <td>
+
+                        {{ resultdata.FinalResults }}
+
+                    </td>
+                    <td>
+                        {{ resultdata.CreateDate }}
+                    </td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                <tr>
+                    <td colspan="5">
+                        <strong>There are no result data present.</strong>
+                    </td>
+                </tr>
+                {% endif %}
+            </table>
+        </div>
+    </div>
+    </article>
+    <article id="tab3">
+      <div class="content">
+                                <div class="CSSTableGenerator">
+                                    <table border="0">
+                                        <tr>
+                                            <td>
+                                                सुचना
+                                            </td>
+                                        </tr>
+                                        {% if notifications %}
+                                        {% for notification in notifications %}
+                                        <tr>
+                                            <td style="color:green">
+                                                {{ notification.Notification }}
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                        {% else %}
+                                        <tr>
+                                            <td>
+                                                <strong>सूचना उपलब्ध नाहीत . </strong>
+                                            </td>
+                                        </tr>
+                                        {% endif %}
+                                    </table>
+                                </div>
+                            </div>
+    </article>
+    <article id="tab4">
+        <div class="content">
+                                <div class="CSSTableGenerator">
+                                    <table border="0">
+                                        <tr>
+                                            <td>
+                                                माहिती
+                                            </td>
+                                        </tr>
+                                        {% if userdata %}
+                                        <tr><td><u> तुमच सांकेतिक नाव:</u>       {{ userdata.username }}</td></tr>
+                                        <tr><td><u> प्रथम नाव:</u>     {{ userdata.first_name }}</td></tr>
+                                        <tr><td><u> आडनाव:</u>      {{ userdata.last_name }}</td></tr>
+                                        <tr><td><u> इ-मेल:</u>   {{ userdata.email }}</td></tr>
+                                        {% else %}
+                                        <strong>माहिती उपलब्ध नाहीत .</strong>
+                                        {% endif %}
+                                    </table>
+                                </div>
+                            </div>
+    </article>
+  </section>
+  </br>
+  <div style="color:red; text-align: center;"><a href="/Applogout/" style="color:green;">Logout</a></b></div>
+</section>
+
+</script>
+</body>
+</html>
+{% endblock %}

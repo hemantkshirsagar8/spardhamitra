@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+    <style>
+        .noborder {
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    {% block content %}
+            <div style="position: absolute; top: 20%; left: 50%; margin-top: -20px; margin-left: -150px;">
+                <div style="border:1px solid silver; padding:10px 10px 10px 10px; color: #59B1FF;">
+                    <b>रजिस्ट्रेशन</b>
+                    <form method="post" action=".">
+                        {% csrf_token %}
+                        <table border="0">
+                            <tr class="noborder"><td>{{ form }}</td></tr>
+                            <tr class="noborder"><td></td><td><input type="submit" value="रजिस्ट्रेशन " /></td></tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+    {% endblock %}
+</body>
+</html>

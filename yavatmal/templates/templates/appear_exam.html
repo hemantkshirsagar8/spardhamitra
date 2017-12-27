@@ -1,0 +1,170 @@
+﻿{% extends "base.html" %}
+{% block content %}
+<!doctype html>
+<html>
+<head>
+    <title>Nagarale Tutions | {% block title %}{% endblock %} </title>
+    {% load staticfiles %}
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="/static/css/reset.css" type="text/css" />
+    <link rel="stylesheet" href="/static/css/styles.css" type="text/css" />
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <script type="text/javascript" src="/static/js/jquery.js"></script>
+    <script type="text/javascript" src="/static/js/slider.js"></script>
+    <script type="text/javascript" src="/static/js/superfish.js"></script>
+    <script type="text/javascript" src="/static/js/custom.js"></script>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+
+</head>
+<body>
+    <div id="container" class="width">
+
+        <header>
+            <div class="width">
+                <div style="font-family:'Arial Rounded MT'; font-size:small; color:wheat; text-align:right">
+                    <b>Welcome {{ user.username }}! <a href="/logout/" style="color:red">Logout</a></b>
+                </div>
+                <h1><a href="#">Nagarale<strong>Tutions</strong></a></h1>
+                <nav>
+
+                    <ul class="sf-menu dropdown">
+
+                        <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+
+                        <li><a href="#"><i class="fa fa-briefcase"></i> My Profile</a></li>
+
+                        <li><a href="#"><i class="fa fa-briefcase"></i> Dashbord</a></li>
+
+                        <li><a href="#"><i class="fa fa-briefcase"></i> About Us</a></li>
+
+                        <li><a href="#"><i class="fa fa-phone"></i> Contact</a></li>
+                    </ul>
+
+                    <div class="clear"></div>
+                </nav>
+            </div>
+            <div class="clear"></div>
+
+
+        </header>
+
+
+
+        <div id="body" class="width">
+
+
+
+            <div class="shadow" style="height:60%">
+
+                <div class="content">
+
+                    
+                    <table>
+                        <tr>
+                            <td colspan="3" style="background-color:#0094ff">
+                                <b style="margin-left:40%; color:white">Exam Centre</b>
+                            </td>
+                        </tr>
+
+
+                        {% if examdata %}
+                        {% for examdata in examdata %}
+                        <tr style="background-color:#48b9ea">
+                            <td><b style="text-align-last:left">Subject: {{ examdata.SubjectID }}</b></td>
+                            <td><b style="margin-left:5%">{{ examdata.ExamName }}</b></td>
+                            <td><b style="margin-left:35%">Timing: {{ examdata.TimePeriod }}</b></td>
+
+                        </tr>
+                        {% endfor %}
+                        {% else %}
+                        <tr>
+                            <td colspan="3">
+                                <strong>There are no exam data present.</strong>
+                            </td>
+                        </tr>
+                        {% endif %}
+
+
+
+
+
+                        
+                            {% if questionset %}
+                            {% for questionset in questionset %}
+                            <tr>
+
+                                <td colspan="3">
+                                    <div>
+                                        <table border="0">
+                                            <tr style="background-color: #5a95f2 ">
+                                                <td>
+                                                    <b style="margin-left:0">Question: {{ questionset.Question }}</b>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><b style="margin-left:5%"><input id="radBtnA" type="radio" />A: {{ questionset.A }}</b></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b style="margin-left:5%"><input id="radBtnB" type="radio" />B: {{ questionset.B }}</b></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b style="margin-left:5%"><input id="radBtnC" type="radio" />C: {{ questionset.C }}</b></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b style="margin-left:5%"><input id="radBtnD" type="radio" />D: {{ questionset.D }}</b></td>
+                                            </tr>
+                                            <tr>
+                                                <td><b style="margin-left:0%"><h4><u>Tip:</u></h4> {{ questionset.Tip }}</b></td>
+                                                
+                                            </tr>
+                                            
+                                        </table>
+                                    </div>
+                        </td>
+
+
+                        </tr>
+                        {% endfor %}
+                        {% else %}
+                        <tr>
+                            <td colspan="3">
+                                <strong>There are no question data present.</strong>
+                            </td>
+                        </tr>
+                        {% endif %}
+                    </table>
+                    </div>
+
+                
+
+
+
+
+                <div class="clear"></div>
+            </div>
+            <footer>
+                <div class="footer-content width">
+
+                    <ul class="endfooter">
+                        <li>
+                            <div class="social-icons">
+                                <a href="#"><i class="fa fa-facebook fa-2x"></i></a>
+                                <a href="#"><i class="fa fa-twitter fa-2x"></i></a>
+                                <a href="#"><i class="fa fa-youtube fa-2x"></i></a>
+                                <a href="#"><i class="fa fa-instagram fa-2x"></i></a>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="clear"></div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; Nagarale Tutions 2014. <a href="#"></a> </p>
+                </div>
+            </footer>
+        </div>
+        </div>
+</body>
+</html>
+
+{% endblock %}

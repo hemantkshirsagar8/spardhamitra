@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Programs</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="/static/site/css/reset.css" type="text/css" media="all">
+<link rel="stylesheet" href="/static/site/css/layout.css" type="text/css" media="all">
+<link rel="stylesheet" href="/static/site/css/style.css" type="text/css" media="all">
+<script type="text/javascript" src="/static/site/js/jquery-1.5.2.js" ></script>
+<script type="text/javascript" src="/static/site/js/cufon-yui.js"></script>
+<script type="text/javascript" src="/static/site/js/cufon-replace.js"></script>
+<script type="text/javascript" src="/static/site/js/Molengo_400.font.js"></script>
+<script type="text/javascript" src="/static/site/js/Expletus_Sans_400.font.js"></script>
+
+<style>
+
+    .white_content {
+        width:100%;
+        height:500px;
+        display: block;
+
+    }
+
+</style>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-77393440-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+</head>
+<body>
+
+<div >
+	<div>
+<!-- content -->
+		<section id="content">
+			<div class="box1">
+				<div class="wrapper">
+					<article class="col2">
+					    <div class="pad_left1">
+							    <a href="#" class="button"><span><span>Articles</span></span></a>
+                                <br />
+							</div>
+							<br />
+							<ul class="list1">
+								{% if Articles %}
+                                {% for Articles in Articles %}
+                                <li><a href="/Programs/{{ Articles.ArticleID }}/" onclick = "document.getElementById('lightL').style.display='block'" target="imgArticle" > {{ Articles.Heading }} </a> </li>
+                                {% endfor %}
+                                {% else %}
+                                <li><a href="#">No Articles currently </a> </li>
+                                {% endif %}
+							</ul>
+
+					</article>
+					<article class="col1 pad_left2">
+					    <div id="lightL" class="white_content" >
+						<div >
+                		    <iframe  name="imgArticle" scrolling="yes" width="100%" height="500px" src="/Programs/1/" ></iframe>
+                		</div>
+                        </div>
+					</article>
+				</div>
+			</div>
+		</section>
+<!-- content -->
+	</div>
+</div>
+<script type="text/javascript"> Cufon.now(); </script>
+</body>
+</html>

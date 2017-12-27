@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Contacts</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="/static/site/css/reset.css" type="text/css" media="all">
+<link rel="stylesheet" href="/static/site/css/layout.css" type="text/css" media="all">
+<link rel="stylesheet" href="/static/site/css/style.css" type="text/css" media="all">
+<script type="text/javascript" src="/static/site/js/jquery-1.5.2.js" ></script>
+<script type="text/javascript" src="/static/site/js/cufon-yui.js"></script>
+<script type="text/javascript" src="/static/site/js/cufon-replace.js"></script>
+<script type="text/javascript" src="/static/site/js/Molengo_400.font.js"></script>
+<script type="text/javascript" src="/static/site/js/Expletus_Sans_400.font.js"></script>
+
+</head>
+
+<body id="page5">
+	<div class="body1">
+		<div class="main">
+<!-- header -->
+			<header>
+				<div class="wrapper">
+					<nav>
+						<ul id="menu">
+							<li><a href="/index">About</a></li>
+							<li><a href="/Courses">Courses</a></li>
+							<li><a href="/Programs">Articles</a></li>
+							{% if user.username %}
+							<li><a href="/Dashboard">Dashboard</a></li>
+							{% endif %}
+							<li><a href="/Teachers">Teachers</a></li>
+							<li><a href="/Admissions">Admissions</a></li>
+							<li class="end"><a href="/Contacts">Contacts</a></li>
+						</ul>
+					</nav>
+					{% if user.username %}
+					<div style="font-family:'Arial Rounded MT'; font-size:small; color:wheat; text-align:right">
+                    <b>Welcome {{ user.username }} ! <a href="/logout/" style="color:red">Logout</a></b>
+					</div>
+					{% endif %}
+					<ul id="icons">
+						<li><a href="#"><img src="/static/site/images/icons1.jpg" alt=""></a></li>
+						<li><a href="#"><img src="/static/site/images/icons2.jpg" alt=""></a></li>
+
+					</ul>
+				</div>
+				<div class="wrapper">
+					<h1><a href="/index" id="logo">Learn Center</a></h1>
+				</div>
+				<div id="slogan">
+					We Will Open The World<span>of knowledge for you!</span>
+				</div>
+
+			</header>
+<!-- / header -->
+		</div>
+	</div>
+	<div class="body2">
+		<div class="main">
+<!-- content -->
+			<section id="content">
+				<div class="box1">
+					<div class="wrapper">
+						<article class="col1">
+						    <br />
+							<div class="pad_left1">
+
+								<a href="#" class="button"><span><span> संपर्कासाठीचा फोर्म </span></span></a>
+                                <br />
+                                <br />
+								<form id="ContactForm">
+									<div>
+										<div  class="wrapper">
+											<strong>नावं:</strong>
+											<div class="bg"><input type="text" class="input" ></div>
+										</div>
+										<div  class="wrapper">
+											<strong>इमेल:</strong>
+											<div class="bg"><input type="text" class="input" ></div>
+										</div>
+										<div  class="textarea_box">
+											<strong>मजकूर:</strong>
+											<div class="bg"><textarea name="textarea" cols="1" rows="1"></textarea>	</div>
+										</div>
+										<a href="#" class="button" onClick="document.getElementById('ContactForm').submit()"><span><span>पाठवा</span></span></a>
+										<a href="#" class="button" onClick="document.getElementById('ContactForm').reset()"><span><span>पुसून टाका</span></span></a>
+									</div>
+								</form>
+							</div>
+						</article>
+						<article class="col2 pad_left2">
+							<div class="pad_left1">
+								<br />
+								<a href="#" class="button"><span><span> जरुरी माहिती </span></span></a>
+                                <br />
+								<p>प्रकाश आणि सुधा हे बालमित्र. बेळगावात एकत्र वाढलेले. दोघानाही लहानपणापासून वाचनाची प्रचंड हौस. पुढे प्रकाश पुण्याला जीओलॉजी शिकायला गेले आणि सुधा मुंबईला मेडिकल कॉलेज मध्ये. तिथे देखील पत्र व्यवहाराने दोघांची मैत्री कायम राहिली आणि कॉलेजचे एक वर्ष पूर्ण होताच, वयाच्या २१ व्या वर्षी प्रकाशने सुधाला लग्न करता मागणी घातली. मात्र सुधाला शिक्षण संपवणे जास्त गरजेचे वाटले. आणि इथपासून दोघांचे मन दुखावले जाण्याला सुरुवात झाली. पुढे चार वर्षांनी त्यांचे लग्न झाले..<br>
+प्रकाश आणि सुधा हे बालमित्र. बेळगावात एकत्र वाढलेले. दोघानाही लहानपणापासून वाचनाची प्रचंड हौस. पुढे प्रकाश पुण्याला जीओलॉजी शिकायला गेले आणि सुधा मुंबईला मेडिकल कॉलेज मध्ये. तिथे देखील पत्र व्यवहाराने दोघांची मैत्री कायम राहिली आणि कॉलेजचे एक वर्ष पूर्ण होताच, वयाच्या २१ व्या वर्षी प्रकाशने सुधाला लग्न करता मागणी घातली. मात्र सुधाला शिक्षण संपवणे जास्त गरजेचे वाटले. आणि इथपासून दोघांचे मन दुखावले जाण्याला सुरुवात झाली. पुढे चार वर्षांनी त्यांचे लग्न झाले.</p>
+							</div>
+
+							<h3>Address:</h3>
+									<p class="col_address"><strong>Country:<br>
+											City:<br>
+											Address:<br>
+											Email:</strong></p>
+									<p>India<br>
+											Yavatmal<br>
+											Dehankar Layout.<br>
+											<a href="mailto:">admin@mail.com</a></p>
+						</article>
+					</div>
+				</div>
+			</section>
+<!-- content -->
+<!-- footer -->
+			<footer>
+				<div class="wrapper">
+					<div class="pad1">
+						<div class="pad_left1">
+							<div class="wrapper">
+								<article class="col_1">
+
+								</article>
+								<article class="col_3">
+								    <article class="call">
+									<span class="call1">Call Us Now: </span><span class="call2">+91-9975410908</span>
+								</article>
+								    </article>
+							</div>
+							<div class="wrapper">
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</footer>
+<!-- / footer -->
+		</div>
+	</div>
+<script type="text/javascript"> Cufon.now(); </script>
+</body>
+</html>

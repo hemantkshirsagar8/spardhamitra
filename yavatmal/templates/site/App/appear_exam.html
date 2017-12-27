@@ -1,0 +1,222 @@
+<!doctype html>
+<html>
+<head>
+    {% block content %}
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+
+
+<script type='text/javascript' src='https://code.jquery.com/jquery-1.8.2.js'></script>
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+            $("#btnSubmitExam").click(function() {
+                    var obj = {};
+                    {% if questionset %}
+                            {% for questionset in questionset %}
+                                var rad = document.getElementsByName({{ questionset.QueID }});
+                                var rad_selected;
+                                for(var i = 0; i < rad.length; i++){
+                                    if(rad[i].checked){
+                                        obj[{{ questionset.QueID }}]=rad[i].value;
+                                    }
+                                }
+                            {% endfor %}
+
+                    {%  endif %}
+                    $.ajax({
+                        url : "http://www.hemantkshirsagar.in/submit_paper",
+                        type : "POST",
+                        dataType: "json",
+                        data : {
+                            client_response : JSON.stringify(obj),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                            },
+                            success : function(json) {
+                                alert(json.server_response);
+                                location.href = 'http://www.hemantkshirsagar.in/AppDashboard/';
+                            },
+                            error : function(xhr,errmsg,err) {
+                                alert(xhr.status + ": " + xhr.responseText);
+                            }
+                    });
+                    return false;
+            });
+        });
+
+{% if examdata %}
+{% for examdata in examdata %}
+
+function secsToDHMS(s)
+{
+  var x = [3600, 60, 1],z,i=-1;
+  while (z=x[++i])
+        x[i] = ("0" + parseInt(s / z,10)).slice(-2),
+        s %= z;
+
+    return x.join(':');
+};
+
+
+(window.onload =function() {
+
+    var currentDate      = new Date();
+    var endDate          = new Date();
+    endDate.setMinutes(currentDate.getMinutes() + {{ examdata.TimePeriod }});
+    var secsToGo         = (new Date(endDate - currentDate)).getTime() / 1000;
+    var countdownElement = document.getElementById('countdown');
+
+    var timer = setInterval(function() {
+
+        if (--secsToGo < 0) {
+            clearInterval(timer);
+            return;
+        }
+
+        countdownElement.innerText = secsToDHMS(secsToGo);
+        if (document.getElementById('countdown').innerText == "00:05:00")
+        {
+            alert(' 5 minutes remainig !!');
+        }
+
+        if(document.getElementById('countdown').innerText == "00:00:10")
+        {
+            $(document).ready(function() {
+            $(function() {
+                    var obj = {};
+                    {% if questionset %}
+                            {% for questionset in questionset %}
+                                var rad = document.getElementsByName({{ questionset.QueID }});
+                                var rad_selected;
+                                for(var i = 0; i < rad.length; i++){
+                                    if(rad[i].checked){
+                                        //rad_selected = rad[i].value;
+                                        obj[{{ questionset.QueID }}]=rad[i].value;
+                                    }
+                                }
+                            {% endfor %}
+
+                    {%  endif %}
+                    $.ajax({
+                        url : "http://www.hemantkshirsagar.in/submit_paper",
+                        type : "POST",
+                        dataType: "json",
+                        data : {
+                            client_response : JSON.stringify(obj),
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                            },
+                            success : function(json) {
+                                alert("AutoSave: " + json.server_response);
+                                location.href = 'http://www.hemantkshirsagar.in/AppDashboard/';
+                            },
+                            error : function(xhr,errmsg,err) {
+                                alert(xhr.status + ": " + xhr.responseText);
+                            }
+                    });
+                    return false;
+            });
+        });
+
+        }
+
+    }, 1000);
+
+
+})();
+
+{% endfor %}
+{% endif %}
+
+
+
+</script>
+
+<style type="text/css">
+  table, tr, td {border: 0px solid silver; }
+  tr.noBorder td {border: 0; }
+</style>
+
+</head>
+<body>
+
+    <div>
+            <div>
+
+                <form method="post" name="example form" >
+                    {% csrf_token %}
+                    <table>
+                        {% if examdata %}
+                        {% for examdata in examdata %}
+                        <tr>
+                            <td align="left"><div><strong style="color:#00aacc">परिक्षा  :</strong> {{ examdata.ExamName }}</div></td>
+                            <td align="right"><div><strong style="color:#00aacc">वेळ :</strong> <div id="countdown"></div></div></td>
+                        </tr>
+                        {% endfor %}
+                        {% else %}
+                        <tr>
+                            <td colspan="2">
+                                <strong>There are no exam data present.</strong>
+                            </td>
+                        </tr>
+                        {% endif %}
+                        <tr>
+                            <td colspan="2">
+                            <div style="height:320px;overflow-y: scroll;">
+                            <table>
+                            {% if questionset %}
+                            {% with total=0 %}
+                            {% for questionset in questionset %}
+
+                            <tr >
+                                <td colspan="3">
+                                    <div style=" border: 1px solid silver; color:#00aacc ">
+                                        <table border="1px">
+                                            <tr style="border-bottom: 1px solid silver">
+                                                <td>
+                                                    <div style="margin-left:0"><strong style="color:black">{{ forloop.counter }} :</strong> {{ questionset.Question }}</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><div style="margin-left:5%"><input id="radBtnA" type="radio" name={{ questionset.QueID }} value="A" /><strong style="color:black">A:</strong> {{ questionset.A }}</div></td>
+                                            </tr>
+                                            <tr>
+                                                <td><div style="margin-left:5%"><input id="radBtnB" type="radio" name={{ questionset.QueID }} value="B" /><strong style="color:black">B:</strong> {{ questionset.B }}</div></td>
+                                            </tr>
+                                            <tr >
+                                                <td><div style="margin-left:5%"><input id="radBtnC" type="radio" name={{ questionset.QueID }} value="C" /><strong style="color:black">C:</strong> {{ questionset.C }}</div></td>
+                                            </tr>
+                                            <tr>
+                                                <td><div style="margin-left:5%"><input id="radBtnD" type="radio" name={{ questionset.QueID }} value="D" /><strong style="color:black">D:</strong> {{ questionset.D }}</div></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        {% endwith %}
+                        {% else %}
+                        <tr>
+                            <td colspan="3">
+                                <strong>There are no question data present. </strong>
+                            </td>
+                        </tr>
+                        {% endif %}
+                        </table>
+                        </div>
+                    </td>
+                    </tr>
+                    <tr>
+                            <td align="left"><input id="btnSubmitExam" type="button" value="Submit Exam" /></td>
+                            <td align="right"><input id="btnBackDash" type="button" value="Back To Dashboard" onclick="location.href='http://www.hemantkshirsagar.in/AppDashboard/'" /></td>
+                    </tr>
+
+                    </table>
+                    </form>
+                <div class="clear"></div>
+        </div>
+        </div>
+{% endblock %}
+</body>
+</html>
+

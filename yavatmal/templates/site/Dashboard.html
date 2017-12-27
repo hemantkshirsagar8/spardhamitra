@@ -1,0 +1,260 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% block content %}
+<title>Yavatmal Mitra Spardha</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="/static/site/css/reset.css" type="text/css" media="all">
+<link rel="stylesheet" href="/static/site/css/layout.css" type="text/css" media="all">
+<link rel="stylesheet" href="/static/site/css/style.css" type="text/css" media="all">
+<script type="text/javascript" src="/static/site/js/jquery-1.5.2.js" ></script>
+<script type="text/javascript" src="/static/site/js/cufon-yui.js"></script>
+<script type="text/javascript" src="/static/site/js/cufon-replace.js"></script>
+<script type="text/javascript" src="/static/site/js/Molengo_400.font.js"></script>
+<script type="text/javascript" src="/static/site/js/Expletus_Sans_400.font.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-77393440-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</head>
+<body id="page5">
+<div class="body1_1">
+	<div class="main">
+<!-- header -->
+		<header>
+			<div class="wrapper">
+
+				<nav>
+					<ul id="menu">
+						<li><a href="/index">About</a></li>
+						<li><a href="/Courses">Courses</a></li>
+						<li><a href="/Programs">Articles</a></li>
+						{% if user.username %}
+							<li><a href="/Dashboard">Dashboard</a></li>
+							{% endif %}
+						<li><a href="/Teachers">Teachers</a></li>
+						<li><a href="/Admissions">Admissions</a></li>
+						<li class="end"><a href="/Contacts">Contacts</a></li>
+					</ul>
+				</nav>
+				{% if user.username %}
+					<div style="font-family:'Arial Rounded MT'; font-size:small; color:wheat; text-align:right">
+                    <b>Welcome {{ user.username }} ! <a href="/logout/" style="color:red">Logout</a></b>
+					</div>
+					{% endif %}
+				<ul id="icons">
+					<li><a href="#"><img src="/static/site/images/icons1.jpg" alt=""></a></li>
+					<li><a href="#"><img src="/static/site/images/icons2.jpg" alt=""></a></li>
+				</ul>
+				<div class="wrapper">
+					<h1><a href="/" id="logo">Learn Center</a></h1>
+				</div>
+				<div id="slogan">
+					We Will Open The World<span>of knowledge for you!</span>
+				</div>
+			</div>
+
+		</header>
+<!-- / header -->
+	</div>
+</div>
+<div class="body2">
+	<div class="main">
+<!-- content -->
+		<section id="content">
+			<div class="box1">
+				<div class="wrapper">
+				<table >
+                <tr>
+					<td>
+                        <b>Exams</b>
+                        <div style="height:60%; width:500px">
+                            <div class="content">
+                                <div class="CSSTableGenerator">
+                                    <table border="0">
+                                        <tr>
+                                            <td>
+                                                Exam Name
+                                            </td>
+                                            <td>
+                                                Subject
+                                            </td>
+                                            <td>
+                                                Created Date
+                                            </td>
+                                        </tr>
+                                        {% if examdata %}
+                                        {% for examdata in examdata %}
+                                        <tr>
+                                            <td>
+                                                <a href="/start_exam/{{ examdata.ExamID }}/">{{ examdata.ExamName }}</a> </td>
+                                            <td>
+                                                {{ examdata.SubjectID }}
+                                            </td>
+                                            <td>
+                                                {{ examdata.CreateDate }}
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                        {% else %}
+                                        <tr>
+                                            <td colspan="3">
+                                                <strong>There are no exam data present.</strong>
+                                            </td>
+                                        </tr>
+                                        {% endif %}
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+
+                        <div  style="height:60%; width:380px; margin-left:20px">
+                             <b>Notifications</b>
+                            <div class="content">
+                                <div class="CSSTableGenerator">
+                                    <table border="0">
+                                        <tr>
+                                            <td>
+                                                Notifications
+                                            </td>
+                                        </tr>
+                                        {% if notifications %}
+                                        {% for notification in notifications %}
+                                        <tr>
+                                            <td style="color:green">
+                                                {{ notification.Notification }}
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                        {% else %}
+                                        <tr>
+                                            <td>
+                                                <strong>There are no notification present.</strong>
+                                            </td>
+                                        </tr>
+                                        {% endif %}
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>My Results</b>
+                        <div class="shadow" style="height:60%; width:500px">
+                            <div class="content">
+                                <div class="CSSTableGenerator">
+                                    <table border="0">
+                                        <tr>
+                                            <td>
+                                                Exam Name
+                                            </td>
+                                            <td>
+                                                Marks
+                                            </td>
+                                            <td>
+                                                Percentage
+                                            </td>
+                                            <td>
+                                                Final Result
+                                            </td>
+                                            <td>
+                                                Created Date
+                                            </td>
+                                        </tr>
+                                        {% if resultdata %}
+                                        {% for resultdata in resultdata %}
+
+
+
+                                        <tr>
+                                            <td>
+                                                <a href="/exam_answers/{{ resultdata.ResultDetailID }}/">{{ resultdata.ExamID }}</a>
+                                            </td>
+                                            <td>
+                                                {{ resultdata.MarksObtain }}/{{ resultdata.TotalMarks }}
+                                            </td>
+                                            <td>
+                                                {{ resultdata.Percentage }}%
+                                            </td>
+                                            <td>
+
+                                                {{ resultdata.FinalResults }}
+
+                                            </td>
+                                            <td>
+                                                {{ resultdata.CreateDate }}
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                        {% else %}
+                                        <tr>
+                                            <td colspan="5">
+                                                <strong>There are no result data present.</strong>
+                                            </td>
+                                        </tr>
+                                        {% endif %}
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+					<td>
+
+                        <div class="shadow" style="height:60%; width:380px; margin-left:20px">
+                            <b>My Profile</b>
+                            <div class="content">
+                                <div class="CSSTableGenerator">
+                                    <table border="0">
+                                        <tr>
+                                            <td>
+                                                Student Information
+                                            </td>
+                                        </tr>
+                                        {% if userdata %}
+                                        <tr><td><u> तुमच सांकेतिक नाव:</u>       {{ userdata.username }}</td></tr>
+                                        <tr><td><u> प्रथम नाव:</u>     {{ userdata.first_name }}</td></tr>
+                                        <tr><td><u> आडनाव:</u>      {{ userdata.last_name }}</td></tr>
+                                        <tr><td><u> इ-मेल:</u>   {{ userdata.email }}</td></tr>
+                                        {% else %}
+                                        <strong>There are no such user present.</strong>
+                                        {% endif %}
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+				</div>
+			</div>
+		</section>
+<!-- content -->
+<!-- footer -->
+		<footer>
+			<div class="wrapper">
+				<div class="pad1">
+					<div class="pad_left1">
+
+					</div>
+				</div>
+			</div>
+		</footer>
+<!-- / footer -->
+	</div>
+</div>
+<script type="text/javascript"> Cufon.now(); </script>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,267 @@
+﻿{% extends "base.html" %}
+{% block content %}
+<!doctype html>
+<html>
+<head>
+    <title>Nagarale Tutions | {% block title %}{% endblock %} </title>
+    {% load staticfiles %}
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="/static/css/reset.css" type="text/css" />
+    <link rel="stylesheet" href="/static/css/styles.css" type="text/css" />
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <script type="text/javascript" src="/static/js/jquery.js"></script>
+    <script type="text/javascript" src="/static/js/slider.js"></script>
+    <script type="text/javascript" src="/static/js/superfish.js"></script>
+    <script type="text/javascript" src="/static/js/custom.js"></script>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+</head>
+<body>
+    <div id="container" class="width">
+
+        <header>
+            <div class="width">
+			
+					{% if user.username %}
+					<div style="font-family:'Arial Rounded MT'; font-size:small; color:wheat; text-align:right">
+                    <b>Welcome {{ user.username }} ! <a href="/logout/" style="color:red">Logout</a></b>
+					</div>
+					{% endif %}
+			
+                <h1><a href="#">Nagarale<strong>Tutions</strong></a></h1>
+                <nav>
+
+                    <ul class="sf-menu dropdown">
+
+                        <li><a href="/home"><i class="fa fa-home"></i>Home</a></li>                        
+                        <li><a href="/dashboard"><i class="fa fa-briefcase"></i>My Dashboard</a></li>
+                        <li><a href="/"><i class="fa fa-briefcase"></i>About Us</a></li>
+                        <li><a href="/"><i class="fa fa-phone"></i>Contact</a></li>
+                    </ul>
+
+                    <div class="clear"></div>
+                </nav>
+            </div>
+            <div class="clear"></div>
+
+
+        </header>
+
+
+
+        <div id="body" class="width">
+
+            <table>
+                <tr>
+                    <td>
+                        <b>My Profile</b>
+                        <div class="shadow" style="height:60%">
+
+                            <div class="content">
+
+                                <div class="CSSTableGenerator">
+                                    <table border="0">
+                                        <tr>
+                                            <td>
+                                                Student Information
+                                            </td>
+                                        </tr>
+
+                                        {% if userdata %}
+                                        <tr><td><u> तुमच सांकेतिक नाव:</u>       {{ userdata.username }}</td></tr>
+                                        <tr><td><u> प्रथम नाव:</u>     {{ userdata.first_name }}</td></tr>
+                                        <tr><td><u> आडनाव:</u>      {{ userdata.last_name }}</td></tr>
+                                        <tr><td><u> इ-मेल:</u>   {{ userdata.email }}</td></tr>
+                                        {% else %}
+                                        <strong>There are no such user present.</strong>
+                                        {% endif %}
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+
+                        <b>Exams</b>
+                        <div class="shadow" style="height:60%">
+
+                            <div class="content">
+                                
+
+
+
+                                <div class="CSSTableGenerator">
+                                    <table border="0">
+                                        <tr>
+                                            <td>
+                                                Exam Name
+                                            </td>
+                                            <td>
+                                                Subject
+                                            </td>
+                                            <td>
+                                                Created Date
+                                            </td>
+                                        </tr>
+                                        {% if examdata %}
+                                        {% for examdata in examdata %}
+                                        <tr>
+                                            <td>
+                                                <a href="/appear_exam/{{ examdata.ExamID }}/">{{ examdata.ExamName }}</a> </td>
+                                            <td>
+                                                {{ examdata.SubjectID }}
+                                            </td>
+                                            <td>
+                                                {{ examdata.CreateDate }}
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                        {% else %}
+                                        <tr>
+                                            <td colspan="3">
+                                                <strong>There are no exam data present.</strong>
+                                            </td>
+                                        </tr>
+                                        {% endif %}
+                                    </table>
+                                </div>
+
+
+                                
+                            </div>
+                        </div>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>My Results</b>
+                        <div class="shadow" style="height:60%">
+
+                            <div class="content">
+                                
+
+
+
+                                <div class="CSSTableGenerator">
+                                    <table border="0">
+                                        <tr>
+                                            <td>
+                                                Exam Name
+                                            </td>
+                                            <td>
+                                                Subject
+                                            </td>
+                                            <td>
+                                                Marks
+                                            </td>
+                                            <td>
+                                                Final Result
+                                            </td>
+                                            <td>
+                                                Created Date
+                                            </td>
+                                        </tr>
+                                        {% if resultdata %}
+                                        {% for resultdata in resultdata %}
+                                        <tr>
+                                            <td>
+                                                {{ resultdata.ExamID }}
+                                            </td>
+                                            <td>
+                                                {{ resultdata.SubjectID }}
+                                            </td>
+                                            <td>
+                                                To be calculate.
+                                            </td>
+                                            <td>
+                                                To be calculate.
+                                            </td>
+                                            <td>
+                                                {{ resultdata.CreateDate }}
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+
+                                        {% else %}
+                                        <tr>
+                                            <td colspan="5">
+                                                <strong>There are no result data present.</strong>
+                                            </td>
+                                        </tr>
+                                        {% endif %}
+
+                                    </table>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <b>Notifications</b>
+                        <div class="shadow" style="height:100%">
+
+                            <div class="content">
+
+                                <div class="CSSTableGenerator">
+                                    <table border="0">
+                                        <tr>
+                                            <td>
+                                                Notifications
+                                            </td>
+                                        </tr>
+
+                                        {% if notifications %}
+
+                                        {% for notification in notifications %}
+                                        <tr>
+                                            <td style="color:green">
+                                                {{ notification.Notification }}
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+
+                                        {% else %}
+
+                                        <strong>There are no notification present.</strong>
+
+                                        {% endif %}
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+
+
+            <div class="clear"></div>
+        </div>
+        <footer>
+            <div class="footer-content width">
+
+                <ul class="endfooter">
+                    <li>
+                        <div class="social-icons">
+                            <a href="#"><i class="fa fa-facebook fa-2x"></i></a>
+                            <a href="#"><i class="fa fa-twitter fa-2x"></i></a>
+                            <a href="#"><i class="fa fa-youtube fa-2x"></i></a>
+                            <a href="#"><i class="fa fa-instagram fa-2x"></i></a>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="clear"></div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; Nagarale Tutions 2014. <a href="#"></a> </p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
+
+{% endblock %}

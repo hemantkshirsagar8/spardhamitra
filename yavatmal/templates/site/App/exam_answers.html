@@ -1,0 +1,105 @@
+
+{% block content %}
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+
+
+<script type="text/javascript">
+
+
+</script>
+
+<style type="text/css">
+  table, tr, td {border: 0px solid silver; }
+  tr.noBorder td {border: 0; }
+</style>
+
+</head>
+<body>
+
+    <div>
+            <div >
+                <form method="post" name="example form" >
+                    {% csrf_token %}
+                    <table>
+                        {% if examdata %}
+                        {% for examdata in examdata %}
+                        <tr>
+                            <td align="left"><b><strong style="color:#0f72b6">परिक्षा  </strong> {{ examdata.ExamName }}</b></td>
+                            <td align="right"><b><strong style="color:#0f72b6">वेळ </strong> {{ examdata.TimePeriod }} (मिनीट)</b></td>
+                        </tr>
+                        {% endfor %}
+
+                        {% else %}
+                        <tr>
+                            <td colspan="2">
+                                <strong>परिक्षा उपलब्ध नाही . </strong>
+                            </td>
+                        </tr>
+                        {% endif %}
+                    <tr>
+                    <td colspan="2">
+                    <div style="height:340px;overflow-y: scroll;">
+                    <table>
+                            {% if userresult %}
+                            {% with total=0 %}
+                            {% for questionset1 in userresult %}
+                            <tr >
+                                <td colspan="3">
+                                    <div style=" border: 1px solid silver; color:#1f4fae;">
+                                        <table border="1px">
+                                            <tr style="border-bottom: 1px solid silver">
+                                                <td colspan="2">
+                                                    <div style="margin-left:0"><strong style="color:black"> {{ forloop.counter }}: </strong>{{ questionset1.Question }}</div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"><div style="margin-left:5%;"><strong style="color:black">A :</strong> {{ questionset1.A }}</div></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"><div style="margin-left:5%;"><strong style="color:black">B :</strong> {{ questionset1.B }}</div></td>
+                                            </tr>
+                                            <tr >
+                                                <td colspan="2"><div style="margin-left:5%;"><strong style="color:black">C :</strong> {{ questionset1.C }}</div></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"><div style="margin-left:5%;"><strong style="color:black">D :</strong> {{ questionset1.D }}</div></td>
+                                            </tr>
+                                            <tr style="border-top: 1px solid silver">
+                                                <td align="left"><b><strong style="color:#ea812a">तुमचा पर्याय :</strong> {{ questionset1.CheckAnswer }} </b></td>
+                                                <td align="right"><b><strong style="color:#5b910c">अचूक पर्याय :</strong> {{ questionset1.CorrAnswer }}</b></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        {% endfor %}
+                        {% endwith %}
+                        {% else %}
+                        <tr>
+                            <td colspan="3">
+                                <strong>परिक्षा उपलब्ध नाही . </strong>
+                            </td>
+                        </tr>
+                        {% endif %}
+                    </table>
+                    </div>
+                    </td>
+                    </tr>
+
+                    <tr>
+                    <td colspan="2" align="center"><input id="btnDashboard" type="button" value="Back To Dashboard" onclick="location.href='http://www.hemantkshirsagar.in/AppDashboard/'" /></td>
+                    </tr>
+                    </table>
+                    </form>
+                <div class="clear"></div>
+        </div>
+        </div>
+</body>
+</html>
+
+{% endblock %}
